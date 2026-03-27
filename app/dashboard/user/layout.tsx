@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, Briefcase, FileText, CheckCircle, Globe, LogOut, Sparkles } from "lucide-react"
+import { LayoutDashboard, Briefcase, FileText, CheckCircle, Globe, LogOut, Sparkles, MessageSquare } from "lucide-react"
 import { useAuth } from "@/context/AuthContext"
 import { Button } from "@/components/ui/button"
 
@@ -20,6 +20,7 @@ export default function UserDashboardLayout({
     { name: "Off-Campus", href: "/dashboard/user/offcampus", icon: Globe },
     { name: "Your Offers", href: "/dashboard/user/offers", icon: CheckCircle },
     { name: "Applied", href: "/dashboard/user/applied", icon: FileText },
+    { name: "Experiences", href: "/dashboard/user/experiences", icon: MessageSquare },
   ]
 
   return (

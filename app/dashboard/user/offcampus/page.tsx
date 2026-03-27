@@ -115,7 +115,7 @@ export default function OffCampusPage() {
                     </div>
                   </div>
                   <a href={job.url} target="_blank" rel="noopener noreferrer">
-                    <Button size="sm" className="bg-slate-900 text-white hover:bg-slate-800" className="gap-1.5 shrink-0">
+                    <Button size="sm" className="gap-1.5 shrink-0 bg-slate-900 text-white hover:bg-slate-800">
                       <ExternalLink className="h-3.5 w-3.5" /> Apply
                     </Button>
                   </a>
