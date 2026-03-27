@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -77,13 +78,13 @@ export default function StudentsPage() {
               </thead>
               <tbody>
                 {filteredStudents.map((student) => (
-                  <tr key={student.id} className="border-b border-border/30 hover:bg-muted/20 transition-colors">
+                  <tr key={student.id} className="border-b border-border/30 hover:bg-muted/20 transition-colors cursor-pointer" onClick={() => window.location.href = `/dashboard/team/students/${student.id}`}>
                     <td className="p-5">
                       <div className="flex items-center gap-3">
                         <div className="h-8 w-8 rounded-full bg-linear-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-xs font-bold text-white">
                           {student.name?.charAt(0)?.toUpperCase() || "?"}
                         </div>
-                        <span className="font-medium">{student.name}</span>
+                        <span className="font-medium text-primary hover:underline">{student.name}</span>
                       </div>
                     </td>
                     <td className="p-5 text-muted-foreground">{student.email}</td>

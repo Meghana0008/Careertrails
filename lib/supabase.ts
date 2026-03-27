@@ -38,6 +38,7 @@ export interface Application {
     user_id: string
     job_id: number
     status: 'Under Review' | 'Interview Scheduled' | 'Accepted' | 'Rejected'
+    rejection_reason?: string
     applied_at: string
     // Joined fields
     jobs?: Job
@@ -75,4 +76,19 @@ export interface Offer {
     offer_date: string
     status: 'Pending' | 'Accepted' | 'Declined'
     created_at: string
+}
+
+export interface InterviewExperience {
+    id: number
+    user_id: string
+    company: string
+    role: string
+    type: 'On-Campus' | 'Off-Campus'
+    rounds: string
+    experience: string
+    result: 'Selected' | 'Rejected' | 'Pending'
+    tips: string
+    created_at: string
+    // Joined fields
+    profiles?: { name: string }
 }

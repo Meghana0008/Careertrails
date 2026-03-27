@@ -65,7 +65,7 @@ export default function CompaniesPage() {
           </h2>
           <p className="text-muted-foreground mt-1">Manage recruiting partners.</p>
         </div>
-        <Button className="bg-slate-900 text-white hover:bg-slate-800" onClick={() => setShowAddModal(true)} className="gap-2">
+        <Button className="gap-2 bg-slate-900 text-white hover:bg-slate-800" onClick={() => setShowAddModal(true)}>
           <Plus className="h-4 w-4" /> Add Company
         </Button>
       </div>
@@ -142,7 +142,7 @@ export default function CompaniesPage() {
               </div>
               <div className="flex gap-3 pt-2">
                 <Button type="button" variant="outline" className="flex-1" onClick={() => setShowAddModal(false)}>Cancel</Button>
-                <Button type="submit" className="bg-slate-900 text-white hover:bg-slate-800" className="flex-1" disabled={saving}>
+                <Button type="submit" className="flex-1 bg-slate-900 text-white hover:bg-slate-800" disabled={saving}>
                   {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
                   Add Company
                 </Button>

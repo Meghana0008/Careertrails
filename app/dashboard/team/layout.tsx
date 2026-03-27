@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, Users, Building2, Calendar, LogOut, Sparkles } from "lucide-react"
+import { LayoutDashboard, Users, Building2, Calendar, LogOut, Sparkles, MessageSquare } from "lucide-react"
 import { useAuth } from "@/context/AuthContext"
 import { Button } from "@/components/ui/button"
 
@@ -19,6 +19,7 @@ export default function TeamDashboardLayout({
     { name: "Students", href: "/dashboard/team/students", icon: Users },
     { name: "Companies", href: "/dashboard/team/companies", icon: Building2 },
     { name: "Drives", href: "/dashboard/team/drives", icon: Calendar },
+    { name: "Experiences", href: "/dashboard/team/experiences", icon: MessageSquare },
   ]
 
   return (

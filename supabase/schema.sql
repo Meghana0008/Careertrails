@@ -186,3 +186,30 @@ INSERT INTO drives (company, role, drive_date, drive_time, venue, eligible, desc
  'TechCorp is hiring Software Engineers. Drive includes aptitude test, coding round, technical and HR interview.', '12 LPA'),
 ('DataWiz', 'Data Analyst', '2025-05-28', '09:30 AM', 'Seminar Hall 1', 'All Branches (CGPA > 7.5)',
  'DataWiz is looking for Data Analysts. Drive includes case study, group discussion, and two interview rounds.', '10 LPA');
+
+-- ===================================
+-- Migration: rejection_reason + interview_experiences
+-- ===================================
+
+-- Add rejection reason to applications
+ALTER TABLE applications ADD COLUMN IF NOT EXISTS rejection_reason TEXT DEFAULT '';
+
+-- 7. Interview experiences forum
+CREATE TABLE IF NOT EXISTS interview_experiences (
+  id SERIAL PRIMARY KEY,
+  user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  company TEXT NOT NULL,
+  role TEXT NOT NULL,
+  type TEXT NOT NULL CHECK (type IN ('On-Campus', 'Off-Campus')),
+  rounds TEXT NOT NULL,
+  experience TEXT NOT NULL,
+  result TEXT NOT NULL CHECK (result IN ('Selected', 'Rejected', 'Pending')),
+  tips TEXT DEFAULT '',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE interview_experiences ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Anyone can read experiences" ON interview_experiences FOR SELECT USING (true);
+CREATE POLICY "Users can insert own experiences" ON interview_experiences FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can delete own experiences" ON interview_experiences FOR DELETE USING (auth.uid() = user_id);
